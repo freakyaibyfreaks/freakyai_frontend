@@ -1,114 +1,40 @@
-/*!
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import DashboardLayout from 'src/layouts/DashboardLayout';
+import MainLayout from 'src/layouts/MainLayout';
+import AccountView from 'src/views/account/AccountView';
+import CustomerListView from 'src/views/customer/CustomerListView';
+import DashboardView from 'src/views/reports/DashboardView';
+import LoginView from 'src/views/auth/LoginView';
+import NotFoundView from 'src/views/errors/NotFoundView';
+import ProductListView from 'src/views/product/ProductListView';
+import RegisterView from 'src/views/auth/RegisterView';
+import SettingsView from 'src/views/settings/SettingsView';
 
-=========================================================
-* Material Dashboard React - v1.9.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2020 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-// @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
-import Person from "@material-ui/icons/Person";
-import LibraryBooks from "@material-ui/icons/LibraryBooks";
-import BubbleChart from "@material-ui/icons/BubbleChart";
-import LocationOn from "@material-ui/icons/LocationOn";
-import Notifications from "@material-ui/icons/Notifications";
-import Unarchive from "@material-ui/icons/Unarchive";
-import Language from "@material-ui/icons/Language";
-// core components/views for Admin layout
-import DashboardPage from "views/Dashboard/Dashboard.js";
-import UserProfile from "views/UserProfile/UserProfile.js";
-import TableList from "views/TableList/TableList.js";
-import Typography from "views/Typography/Typography.js";
-import Icons from "views/Icons/Icons.js";
-import Maps from "views/Maps/Maps.js";
-import NotificationsPage from "views/Notifications/Notifications.js";
-import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.js";
-// core components/views for RTL layout
-import RTLPage from "views/RTLPage/RTLPage.js";
-
-const dashboardRoutes = [
+const routes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    rtlName: "لوحة القيادة",
-    icon: Dashboard,
-    component: DashboardPage,
-    layout: "/admin"
+    path: 'app',
+    element: <DashboardLayout />,
+    children: [
+      { path: 'account', element: <AccountView /> },
+      { path: 'customers', element: <CustomerListView /> },
+      { path: 'dashboard', element: <DashboardView /> },
+      { path: 'products', element: <ProductListView /> },
+      { path: 'settings', element: <SettingsView /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
   },
   {
-    path: "/user",
-    name: "User Profile",
-    rtlName: "ملف تعريفي للمستخدم",
-    icon: Person,
-    component: UserProfile,
-    layout: "/admin"
-  },
-  {
-    path: "/table",
-    name: "Table List",
-    rtlName: "قائمة الجدول",
-    icon: "content_paste",
-    component: TableList,
-    layout: "/admin"
-  },
-  {
-    path: "/typography",
-    name: "Typography",
-    rtlName: "طباعة",
-    icon: LibraryBooks,
-    component: Typography,
-    layout: "/admin"
-  },
-  {
-    path: "/icons",
-    name: "Icons",
-    rtlName: "الرموز",
-    icon: BubbleChart,
-    component: Icons,
-    layout: "/admin"
-  },
-  {
-    path: "/maps",
-    name: "Maps",
-    rtlName: "خرائط",
-    icon: LocationOn,
-    component: Maps,
-    layout: "/admin"
-  },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    rtlName: "إخطارات",
-    icon: Notifications,
-    component: NotificationsPage,
-    layout: "/admin"
-  },
-  {
-    path: "/rtl-page",
-    name: "RTL Support",
-    rtlName: "پشتیبانی از راست به چپ",
-    icon: Language,
-    component: RTLPage,
-    layout: "/rtl"
-  },
-  {
-    path: "/upgrade-to-pro",
-    name: "Upgrade To PRO",
-    rtlName: "التطور للاحترافية",
-    icon: Unarchive,
-    component: UpgradeToPro,
-    layout: "/admin"
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      { path: 'login', element: <LoginView /> },
+      { path: 'register', element: <RegisterView /> },
+      { path: '404', element: <NotFoundView /> },
+      { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '*', element: <Navigate to="/404" /> }
+    ]
   }
 ];
 
-export default dashboardRoutes;
+export default routes;
