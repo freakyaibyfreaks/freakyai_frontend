@@ -1,0 +1,15 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-freakyai-production-222413-authRole",
+            "UnauthRoleArn": "arn:aws:iam::013004477093:role/amplify-freakyai-production-222413-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::013004477093:role/amplify-freakyai-production-222413-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-freakyai-production-222413-deployment",
+            "UnauthRoleName": "amplify-freakyai-production-222413-unauthRole",
+            "StackName": "amplify-freakyai-production-222413",
+            "StackId": "arn:aws:cloudformation:us-east-1:013004477093:stack/amplify-freakyai-production-222413/9dc13570-6bc0-11eb-9430-0a903255f0c5",
+            "AmplifyAppId": "d27nrrl6ezqobk"
+        }
+    }
+}
