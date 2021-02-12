@@ -34,43 +34,43 @@ const items = [
   {
     href: '/app/dashboard',
     icon: BarChartIcon,
-    title: 'Dashboard'
+    title: 'Code Converter'
   },
-  {
-    href: '/app/customers',
-    icon: UsersIcon,
-    title: 'Customers'
-  },
-  {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
-  },
-  {
-    href: '/app/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
-  {
-    href: '/app/settings',
-    icon: SettingsIcon,
-    title: 'Settings'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
-  }
+  // {
+  //   href: '/app/customers',
+  //   icon: UsersIcon,
+  //   title: 'Customers'
+  // },
+  // {
+  //   href: '/app/products',
+  //   icon: ShoppingBagIcon,
+  //   title: 'Products'
+  // },
+  // {
+  //   href: '/app/account',
+  //   icon: UserIcon,
+  //   title: 'Account'
+  // },
+  // {
+  //   href: '/app/settings',
+  //   icon: SettingsIcon,
+  //   title: 'Settings'
+  // },
+  // {
+  //   href: '/login',
+  //   icon: LockIcon,
+  //   title: 'Login'
+  // },
+  // {
+  //   href: '/register',
+  //   icon: UserPlusIcon,
+  //   title: 'Register'
+  // },
+  // {
+  //   href: '/404',
+  //   icon: AlertCircleIcon,
+  //   title: 'Error'
+  // }
 ];
 
 const useStyles = makeStyles(() => ({
@@ -106,7 +106,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
       display="flex"
       flexDirection="column"
     >
-      <Box
+      {/* <Box
         alignItems="center"
         display="flex"
         flexDirection="column"
@@ -132,7 +132,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           {user.jobTitle}
         </Typography>
       </Box>
-      <Divider />
+      <Divider /> */}
       <Box p={2}>
         <List>
           {items.map((item) => (
@@ -146,12 +146,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box flexGrow={1} />
-      <Box
+      {/* <Box
         p={2}
         m={2}
         bgcolor="background.dark"
-      >
-        <Typography
+      > */}
+        {/* <Typography
           align="center"
           gutterBottom
           variant="h4"
@@ -163,8 +163,8 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           variant="body2"
         >
           Upgrade to PRO version and access 20 more screens
-        </Typography>
-        <Box
+        </Typography> */}
+        {/* <Box
           display="flex"
           justifyContent="center"
           mt={2}
@@ -177,14 +177,14 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           >
             See PRO version
           </Button>
-        </Box>
-      </Box>
+        </Box> */}
+      {/* </Box> */}
     </Box>
   );
 
   return (
     <>
-      <Hidden lgUp>
+      {/* <Hidden lgUp>
         <Drawer
           anchor="left"
           classes={{ paper: classes.mobileDrawer }}
@@ -194,7 +194,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         >
           {content}
         </Drawer>
-      </Hidden>
+      </Hidden> */}
       <Hidden mdDown>
         <Drawer
           anchor="left"
