@@ -34,7 +34,7 @@ const items = [
   {
     href: '/app/dashboard',
     icon: BarChartIcon,
-    title: 'Code Converter'
+    title: 'Code Converter app'
   },
   // {
   //   href: '/app/customers',
