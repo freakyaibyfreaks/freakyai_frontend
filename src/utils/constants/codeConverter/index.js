@@ -2,14 +2,14 @@
 export const sourceLanguages = [
     'C++',
     'JAVA', 
-    'Python3'
+    'Python'
 ]
 
 /* Available target languages */
 export const targetLanguages = [
     'C++',
     'JAVA',
-    'Python3'
+    'Python'
 ]
 
 /* Sample JAVA code */

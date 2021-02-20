@@ -57,14 +57,64 @@ const Dashboard = () => {
 
   // setting source language value
   const handleChangeSource = (event) => {
-    setSourceLanguage(event.target.value);
+    /*
+     * if target language is not same target language,
+     * set the target language as selected by user
+    */ 
+    if (event.target.value !== targetLanguage) {
+      setSourceLanguage(event.target.value);
+    }
   };
 
   // setting target language value
   const handleChangeTarget = (event) => {
-    setTargetLanguage(event.target.value);
+
+    /*
+     * if target language is not same target language,
+     * set the target language as selected by user
+    */ 
+    if (event.target.value !== sourceLanguage) {
+      setTargetLanguage(event.target.value);
+    }
   }; 
 
+  // preview code for source language
+  const getSampleCodeSourceLanguage = () => {
+    if (sourceLanguage === sourceLanguages[0]) {
+
+      // returing the sample C++ code
+      return sampleC_plus_plus_code;
+    }
+    if (sourceLanguage === sourceLanguages[1])  {
+
+      // returning the sample JAVA code
+      return sampleJAVACode;
+    }
+    if (sourceLanguage === sourceLanguages[2]) {
+
+      // returning the sample python code
+      return samplePythonCode
+    }
+  } 
+
+  // preview code for target language
+  const getSampleCodeTargetLanguage = () => {
+    if(targetLanguage === targetLanguages[0]) {
+
+      // returning the sample C++ code
+      return sampleC_plus_plus_code;
+    }
+    if(targetLanguage === targetLanguages[1]) {
+
+      // returning the sample JAVA code
+      return sampleJAVACode;
+    }
+    if(targetLanguage === targetLanguages[2]) {
+
+      // returning the sample python code
+      return samplePythonCode;
+    }
+  }
   return (
     <Page
       className={classes.root}
@@ -83,7 +133,7 @@ const Dashboard = () => {
             xs={3}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">{sourceLanguage}</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{sourceLanguage}</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
@@ -91,16 +141,16 @@ const Dashboard = () => {
                 onChange={handleChangeSource}
                 label="sourceLanguage"
               >
-                <MenuItem value={10}>{sourceLanguages[0]}</MenuItem>
-                <MenuItem value={20}>{sourceLanguages[1]}</MenuItem>
-                <MenuItem value={30}>{sourceLanguages[2]}</MenuItem>
+                <MenuItem value={sourceLanguages[0]}>{sourceLanguages[0]}</MenuItem>
+                <MenuItem value={sourceLanguages[1]}>{sourceLanguages[1]}</MenuItem>
+                <MenuItem value={sourceLanguages[2]}>{sourceLanguages[2]}</MenuItem>
               </Select>
             </FormControl>
           </Grid> 
           <Grid item lg={3} sm={3} xl={3} xs={3}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">{targetLanguage}</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{targetLanguage}</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
@@ -108,9 +158,9 @@ const Dashboard = () => {
                 onChange={handleChangeTarget}
                 label="targetLanguage"
               >
-                <MenuItem value={10}> {targetLanguages[0]} </MenuItem>
-                <MenuItem value={20}> {targetLanguages[1]} </MenuItem>
-                <MenuItem value={30}> {targetLanguages[2]} </MenuItem>
+                <MenuItem value={targetLanguages[0]}> {targetLanguages[0]} </MenuItem>
+                <MenuItem value={targetLanguages[1]}> {targetLanguages[1]} </MenuItem>
+                <MenuItem value={targetLanguages[2]}> {targetLanguages[2]} </MenuItem>
               </Select>
             </FormControl>
           </Grid> 
@@ -125,7 +175,7 @@ const Dashboard = () => {
               label="Sample Source Lang Code"
               multiline
               rows={22}
-              placeholder={sampleJAVACode}
+              placeholder={getSampleCodeSourceLanguage()}
               variant="outlined"
             />
           </Grid>
@@ -135,7 +185,7 @@ const Dashboard = () => {
               label="Sample Target Lang Code"
               multiline
               rows={22}
-              placeholder={samplePythonCode}
+              placeholder={getSampleCodeTargetLanguage()}
               variant="outlined"
             />  
           </Grid>
