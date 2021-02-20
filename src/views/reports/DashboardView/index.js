@@ -10,7 +10,13 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { sourceLanguages, targetLanguages, sampleJAVACode, samplePythonCode } from '../../../utils/constants'
+import { 
+  sourceLanguages, 
+  targetLanguages, 
+  sampleJAVACode, 
+  samplePythonCode, 
+  sampleC_plus_plus_code 
+} from '../../../utils/constants/codeConverter/index';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,13 +46,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
- 
-
 const Dashboard = () => {
   const classes = useStyles();
 
   // Source language
-  const [sourceLanguage, setSourceLanguage] = React.useState('');
+  const [sourceLanguage, setSourceLanguage] = React.useState('JAVA');
 
   // target language
   const [targetLanguage, setTargetLanguage] = React.useState('');
@@ -59,13 +63,7 @@ const Dashboard = () => {
   // setting target language value
   const handleChangeTarget = (event) => {
     setTargetLanguage(event.target.value);
-  };
-
-  const [value, setValue] = React.useState('Controlled');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  }; 
 
   return (
     <Page
@@ -85,7 +83,7 @@ const Dashboard = () => {
             xs={6}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Source</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">Source Language</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
@@ -107,7 +105,7 @@ const Dashboard = () => {
             xs={6}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Target</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">Target Language</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
@@ -148,7 +146,7 @@ const Dashboard = () => {
           >
             <TextField
               id="outlined-multiline-static"
-              label="Source"
+              label="Source Language Code"
               multiline
               rows={22}
               placeholder={sampleJAVACode}
@@ -164,7 +162,7 @@ const Dashboard = () => {
           >
             <TextField
               id="outlined-multiline-static"
-              label="Target"
+              label="Target Language Code"
               multiline
               rows={22}
               placeholder={samplePythonCode}

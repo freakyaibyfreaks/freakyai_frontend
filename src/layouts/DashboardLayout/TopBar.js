@@ -50,11 +50,11 @@ const TopBar = ({
               color="primary"
               variant="dot"
             >
-              <NotificationsIcon />
+              {/* <NotificationsIcon /> */}
             </Badge>
           </IconButton>
           <IconButton color="inherit">
-            <InputIcon />
+            {/* <InputIcon /> */}
           </IconButton>
         </Hidden>
         <Hidden lgUp>
@@ -62,7 +62,7 @@ const TopBar = ({
             color="inherit"
             onClick={onMobileNavOpen}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
         </Hidden>
       </Toolbar>
