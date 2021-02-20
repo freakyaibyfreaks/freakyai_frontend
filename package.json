@@ -1,5 +1,5 @@
 {
-  "name": "react-material-dashboard",
+  "name": "freakyai",
   "author": "DeviasIO",
   "licence": "MIT",
   "version": "1.0.0",
@@ -30,6 +30,8 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.10.0",
+    "@sentry/react": "^6.2.0",
+    "@sentry/tracing": "^6.2.0",
     "chart.js": "^2.9.4",
     "clsx": "^1.1.1",
     "formik": "^2.1.5",

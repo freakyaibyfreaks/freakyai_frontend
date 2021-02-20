@@ -53,7 +53,7 @@ const Dashboard = () => {
   const [sourceLanguage, setSourceLanguage] = React.useState('JAVA');
 
   // target language
-  const [targetLanguage, setTargetLanguage] = React.useState('');
+  const [targetLanguage, setTargetLanguage] = React.useState('C++');
 
   // setting source language value
   const handleChangeSource = (event) => {
@@ -77,19 +77,19 @@ const Dashboard = () => {
         >
           <Grid
             item
-            lg={2}
-            sm={4}
-            xl={2}
-            xs={6}
+            lg={3}
+            sm={3}
+            xl={3}
+            xs={3}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Source Language</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">{sourceLanguage}</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={sourceLanguage}
                 onChange={handleChangeSource}
-                label="Language"
+                label="sourceLanguage"
               >
                 <MenuItem value={10}>{sourceLanguages[0]}</MenuItem>
                 <MenuItem value={20}>{sourceLanguages[1]}</MenuItem>
@@ -97,21 +97,16 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid
-            item
-            lg={2}
-            sm={4}
-            xl={2}
-            xs={6}
+          <Grid item lg={3} sm={3} xl={3} xs={3}
           >
             <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">Target Language</InputLabel>
+            <InputLabel id="demo-simple-select-outlined-label">{targetLanguage}</InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={targetLanguage}
                 onChange={handleChangeTarget}
-                label="Language"
+                label="targetLanguage"
               >
                 <MenuItem value={10}> {targetLanguages[0]} </MenuItem>
                 <MenuItem value={20}> {targetLanguages[1]} </MenuItem>
@@ -119,62 +114,32 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            
+          <Grid item lg={3} sm={6} xl={3} xs={12}>
           </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
+          <Grid item lg={3} sm={6} xl={3} xs={12}>
              
           </Grid>
-          <Grid
-            item
-            lg={6}
-            sm={6}
-            xl={6}
-            xs={6}
-          >
+          <Grid item lg={6} sm={6} xl={6} xs={6} >
             <TextField
               id="outlined-multiline-static"
-              label="Source Language Code"
+              label="Sample Source Lang Code"
               multiline
               rows={22}
               placeholder={sampleJAVACode}
               variant="outlined"
             />
           </Grid>
-           <Grid
-            item
-            lg={6}
-            sm={6}
-            xl={6}
-            xs={6}
-          >
+           <Grid item lg={6} sm={6} xl={6} xs={6}>
             <TextField
               id="outlined-multiline-static"
-              label="Target Language Code"
+              label="Sample Target Lang Code"
               multiline
               rows={22}
               placeholder={samplePythonCode}
               variant="outlined"
             />  
           </Grid>
-          <Grid
-            lg={6}
-            sm={6}
-            xl={6}
-            xs={6}
-          >
+          <Grid lg={6} sm={6} xl={6}xs={6}>
             <Button variant="contained" color="primary" className={classes.convertButtonClass} >
               Convert
             </Button>
