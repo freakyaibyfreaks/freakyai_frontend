@@ -125,13 +125,7 @@ const Dashboard = () => {
           container
           spacing={3}
         >
-          <Grid
-            item
-            lg={3}
-            sm={3}
-            xl={3}
-            xs={3}
-          >
+          <Grid xs={3}>
             <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{sourceLanguage}</InputLabel>
               <Select
@@ -147,7 +141,7 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid item lg={3} sm={3} xl={3} xs={3}
+          <Grid xs={3}
           >
             <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{targetLanguage}</InputLabel>
@@ -164,11 +158,9 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-             
-          </Grid>
+          <Grid xs={3}></Grid>
+          <Grid xs={3}></Grid>
+          
           <Grid item lg={6} sm={6} xl={6} xs={6} >
             <TextField
               id="outlined-multiline-static"
@@ -189,7 +181,7 @@ const Dashboard = () => {
               variant="outlined"
             />  
           </Grid>
-          <Grid lg={6} sm={6} xl={6}xs={6}>
+          <Grid lg={6} sm={6} xl={6} xs={6}>
             <Button variant="contained" color="primary" className={classes.convertButtonClass} >
               Convert
             </Button>
