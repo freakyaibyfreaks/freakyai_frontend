@@ -23,18 +23,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2),
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
       width: '70ch',
     },
     '& > *': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
     },
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     minWidth: 180,
   },
   selectEmpty: {
@@ -125,7 +125,7 @@ const Dashboard = () => {
           container
           spacing={3}
         >
-          <Grid xs={3}>
+          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
             <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{sourceLanguage}</InputLabel>
               <Select
@@ -141,8 +141,7 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid> 
-          <Grid xs={3}
-          >
+          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
             <FormControl variant="outlined" className={classes.formControl}>
             <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{targetLanguage}</InputLabel>
               <Select
@@ -157,11 +156,8 @@ const Dashboard = () => {
                 <MenuItem value={targetLanguages[2]}> {targetLanguages[2]} </MenuItem>
               </Select>
             </FormControl>
-          </Grid> 
-          <Grid xs={3}></Grid>
-          <Grid xs={3}></Grid>
-          
-          <Grid item lg={6} sm={6} xl={6} xs={6} >
+          </Grid>       
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} >
             <TextField
               id="outlined-multiline-static"
               label="Sample Source Lang Code"
@@ -171,7 +167,7 @@ const Dashboard = () => {
               variant="outlined"
             />
           </Grid>
-           <Grid item lg={6} sm={6} xl={6} xs={6}>
+           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             <TextField
               id="outlined-multiline-static"
               label="Sample Target Lang Code"
@@ -181,7 +177,7 @@ const Dashboard = () => {
               variant="outlined"
             />  
           </Grid>
-          <Grid lg={6} sm={6} xl={6} xs={6}>
+          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
             <Button variant="contained" color="primary" className={classes.convertButtonClass} >
               Convert
             </Button>
