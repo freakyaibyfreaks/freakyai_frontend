@@ -43,6 +43,12 @@ const useStyles = makeStyles((theme) => ({
   convertButtonClass: {
     margin: theme.spacing(2),
     minWidth: 120,
+  },
+  sourceLangDiv: {
+    display: 'flex'
+  },
+  targetLangDiv: {
+    display: 'flex'
   }
 }));
 
@@ -157,7 +163,7 @@ const Dashboard = () => {
               </Select>
             </FormControl>
           </Grid>       
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} >
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.sourceLangDiv}>
             <TextField
               id="outlined-multiline-static"
               label="Sample Source Lang Code"
@@ -167,7 +173,7 @@ const Dashboard = () => {
               variant="outlined"
             />
           </Grid>
-           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.targetLangDiv}>
             <TextField
               id="outlined-multiline-static"
               label="Sample Target Lang Code"
