@@ -4,7 +4,9 @@ import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account/AccountView';
 import CustomerListView from 'src/views/customer/CustomerListView';
-import DashboardView from 'src/views/reports/DashboardView';
+import CodeConverter from 'src/views/codeConverter';
+import BackgroundRemoval from 'src/views/backgroundRemoval';
+import ExtractImageFromImage from 'src/views/extractTextFromImage';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
@@ -18,8 +20,9 @@ const routes = [
     children: [
       // { path: 'account', element: <AccountView /> },
       // { path: 'customers', element: <CustomerListView /> },
-      { path: 'dashboard', element: <DashboardView /> },
-      // { path: 'products', element: <ProductListView /> },
+      { path: 'codeConverter', element: <CodeConverter /> },
+      { path: 'backgroundRemoval', element: <BackgroundRemoval /> },
+      { path: 'extractImageFromImage', element: <ExtractImageFromImage /> },
       // { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
@@ -31,7 +34,7 @@ const routes = [
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
-      { path: '/', element: <Navigate to="/app/dashboard" /> },
+      { path: '/', element: <Navigate to="/app/codeConverter" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   }

@@ -6,17 +6,17 @@ export declare module CODE {
         }
     }
     
-    export interface codeConverter {
+    export interface backgrondRemoval {
         sourceLanguage: string,
         targetLanguage: string,
         sourceLanguageCode: string,
         targetLanguageCode: string
     }
 
-    export interface codeConverterReducer { 
+    export interface backgrondRemovalReducer { 
         isLoading: boolean;
         error: Error;
-        convert: codeConverter;
+        convert: backgrondRemoval;
     }
 }
 

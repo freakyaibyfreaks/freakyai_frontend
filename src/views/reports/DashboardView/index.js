@@ -148,76 +148,76 @@ const Dashboard = () => {
     debugger
   }, [codeConverter.convert]);
   return (
-    <Page
-      className={classes.root}
-      title="Dashboard"
-    >
-      <Container maxWidth={false}>
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{sourceLanguage}</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={sourceLanguage}
-                onChange={handleChangeSource}
-                label="sourceLanguage"
-              >
-                <MenuItem value={sourceLanguages[0]}>{sourceLanguages[0]}</MenuItem>
-                <MenuItem value={sourceLanguages[1]}>{sourceLanguages[1]}</MenuItem>
-                <MenuItem value={sourceLanguages[2]}>{sourceLanguages[2]}</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid> 
-          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
-            <FormControl variant="outlined" className={classes.formControl}>
-            <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{targetLanguage}</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={targetLanguage}
-                onChange={handleChangeTarget}
-                label="targetLanguage"
-              >
-                <MenuItem value={targetLanguages[0]}> {targetLanguages[0]} </MenuItem>
-                <MenuItem value={targetLanguages[1]}> {targetLanguages[1]} </MenuItem>
-                <MenuItem value={targetLanguages[2]}> {targetLanguages[2]} </MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>       
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.sourceLangDiv}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Sample Source Lang Code"
-              multiline
-              rows={22}
-              placeholder={getSampleCodeSourceLanguage()}
-              variant="outlined"
-              onChange={(e) => setSourceLanguageCode(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.targetLangDiv}>
-            <TextField
-              id="outlined-multiline-static"
-              label="Sample Target Lang Code"
-              multiline
-              rows={22}
-              placeholder={getSampleCodeTargetLanguage()}
-              variant="outlined"
-            />  
-          </Grid>
-          <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Button variant="contained" color="primary" className={classes.convertButtonClass} onClick={() => convertCode()}>
-              Convert
-            </Button>
-          </Grid>
-        </Grid>
-      </Container>
-    </Page>
+    // <Page
+    //   className={classes.root}
+    //   title="Dashboard"
+    // >
+    //   <Container maxWidth={false}>
+    //     <Grid
+    //       container
+    //       spacing={3}
+    //     >
+    //       <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
+    //         <FormControl variant="outlined" className={classes.formControl}>
+    //         <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{sourceLanguage}</InputLabel>
+    //           <Select
+    //             labelId="demo-simple-select-outlined-label"
+    //             id="demo-simple-select-outlined"
+    //             value={sourceLanguage}
+    //             onChange={handleChangeSource}
+    //             label="sourceLanguage"
+    //           >
+    //             <MenuItem value={sourceLanguages[0]}>{sourceLanguages[0]}</MenuItem>
+    //             <MenuItem value={sourceLanguages[1]}>{sourceLanguages[1]}</MenuItem>
+    //             <MenuItem value={sourceLanguages[2]}>{sourceLanguages[2]}</MenuItem>
+    //           </Select>
+    //         </FormControl>
+    //       </Grid> 
+    //       <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
+    //         <FormControl variant="outlined" className={classes.formControl}>
+    //         <InputLabel id="demo-simple-select-outlined-label">{'Language:'}{targetLanguage}</InputLabel>
+    //           <Select
+    //             labelId="demo-simple-select-outlined-label"
+    //             id="demo-simple-select-outlined"
+    //             value={targetLanguage}
+    //             onChange={handleChangeTarget}
+    //             label="targetLanguage"
+    //           >
+    //             <MenuItem value={targetLanguages[0]}> {targetLanguages[0]} </MenuItem>
+    //             <MenuItem value={targetLanguages[1]}> {targetLanguages[1]} </MenuItem>
+    //             <MenuItem value={targetLanguages[2]}> {targetLanguages[2]} </MenuItem>
+    //           </Select>
+    //         </FormControl>
+    //       </Grid>       
+    //       <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.sourceLangDiv}>
+    //         <TextField
+    //           id="outlined-multiline-static"
+    //           label="Sample Source Lang Code"
+    //           multiline
+    //           rows={22}
+    //           placeholder={getSampleCodeSourceLanguage()}
+    //           variant="outlined"
+    //           onChange={(e) => setSourceLanguageCode(e.target.value)}
+    //         />
+    //       </Grid>
+    //       <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.targetLangDiv}>
+    //         <TextField
+    //           id="outlined-multiline-static"
+    //           label="Sample Target Lang Code"
+    //           multiline
+    //           rows={22}
+    //           placeholder={getSampleCodeTargetLanguage()}
+    //           variant="outlined"
+    //         />  
+    //       </Grid>
+    //       <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
+    //         <Button variant="contained" color="primary" className={classes.convertButtonClass} onClick={() => convertCode()}>
+    //           Convert
+    //         </Button>
+    //       </Grid>
+    //     </Grid>
+    //   </Container>
+    // </Page>
   );
 };
 

@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BackgroundRemoval = () => {
+const ExtractTextFromImage = () => {
   const classes = useStyles();
  
   return (
@@ -41,7 +41,7 @@ const BackgroundRemoval = () => {
           <Card>
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                Image Background Removal API
+                Text Extraction from Image Removal API
               </Typography>
               <Typography variant="h5" component="h2">
                 Coming Soon.....
@@ -65,4 +65,4 @@ const BackgroundRemoval = () => {
   );
 };
 
-export default BackgroundRemoval;
+export default ExtractTextFromImage;

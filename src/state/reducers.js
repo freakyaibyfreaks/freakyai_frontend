@@ -1,6 +1,8 @@
+import backgrondRemovalReducer from './backgroundRemoval/reducers';
 import codeConverterReducer from './codeConverter/reducers';
 
-const reducers = ({ codeConverter }, action) => ({
+const reducers = ({ backgrondRemoval, codeConverter }, action) => ({
+  backgrondRemoval: backgrondRemovalReducer(backgrondRemoval, action),
   codeConverter: codeConverterReducer(codeConverter, action),
 });
 

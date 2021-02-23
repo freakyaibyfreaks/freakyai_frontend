@@ -2,20 +2,20 @@ import {
   convert,
   convertSuccess,
   convertFailure,
-  resetImageToTextConverter,
+  resetCodeConverter,
 } from '../actions';
 import { useStateValue } from '../..';
 import api from '../../../services/index';
 
-const useImageToTextConverter = () => {
+const useBackgrondRemoval = () => {
 
-  const [{ imageToTextConverter }, dispatch] = useStateValue();
+  const [{ backgrondRemoval }, dispatch] = useStateValue();
   
   // convert code from one language to other
   const toConvert = async (values) => {
     dispatch(convert());
     try {
-      const response = await api.post('/codeConverter', values);
+      const response = await api.post('/backgrondRemoval', values);
       dispatch(convertSuccess(response));
     } catch (e) {
       dispatch(convertFailure(e));
@@ -23,14 +23,14 @@ const useImageToTextConverter = () => {
   };
 
   const toReset = () => {
-    dispatch(resetImageToTextConverter());
+    dispatch(resetCodeConverter());
   };
 
   return {
-    imageToTextConverter,
+    backgrondRemoval,
     toConvert,
     toReset
   };
 };
 
-export default useImageToTextConverter;
+export default useBackgrondRemoval;

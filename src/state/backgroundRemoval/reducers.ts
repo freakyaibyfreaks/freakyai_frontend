@@ -6,13 +6,13 @@ import {
 } from './actions';
 import { CODE } from './type';
 
-export const INITIAL_STATE: CODE.codeConverterReducer = {
+export const INITIAL_STATE: CODE.backgrondRemovalReducer = {
   isLoading: false,
   error: {} as CODE.Error,
-  convert: {} as CODE.codeConverter
+  convert: {} as CODE.backgrondRemoval
 };
 
-const codeConverterReducer = (state = INITIAL_STATE, action: any) : CODE.codeConverterReducer => {
+const backgrondRemovalReducer = (state = INITIAL_STATE, action: any) : CODE.backgrondRemovalReducer => {
   switch (action.type) {
     case CONVERT:
       return {
@@ -30,7 +30,7 @@ const codeConverterReducer = (state = INITIAL_STATE, action: any) : CODE.codeCon
     case CONVERT_FAILURE:
       return {
         ...state,
-        convert: {} as CODE.codeConverter,
+        convert: {} as CODE.backgrondRemoval,
         isLoading: false,
         error: { convert: action.payload.message }
       };
@@ -39,10 +39,10 @@ const codeConverterReducer = (state = INITIAL_STATE, action: any) : CODE.codeCon
         ...state,
         isLoading: false,
         error: {} as CODE.Error,
-        convert: {} as CODE.codeConverter,
+        convert: {} as CODE.backgrondRemoval,
       };
     default:
       return state;
   }
 };
-export default codeConverterReducer;
+export default backgrondRemovalReducer;

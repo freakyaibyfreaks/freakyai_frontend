@@ -14,7 +14,9 @@ import {
 } from '@material-ui/core';
 import {
   AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
+  Zap as ZapIcon,
+  Image as ImageIcon,
+  Aperture as ApertureIcon,
   Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
@@ -32,9 +34,19 @@ const user = {
 
 const items = [
   {
-    href: '/app/dashboard',
-    icon: BarChartIcon,
-    title: 'Code Converter app'
+    href: '/app/codeConverter',
+    icon: ZapIcon,
+    title: 'Code Converter'
+  },
+  {
+    href: '/app/backgroundRemoval',
+    icon: ImageIcon,
+    title: 'Img Background Removal'
+  },
+  {
+    href: '/app/extractImageFromImage',
+    icon: ApertureIcon,
+    title: 'Image Text Extractor'
   },
   // {
   //   href: '/app/customers',
