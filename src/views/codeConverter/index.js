@@ -145,7 +145,13 @@ const CodeConverter = () => {
   }
 
   useEffect(() => {
-    debugger
+
+    // removing first n unneccessary characters from a string
+    const convertedCode = codeConverter.convert.data ? codeConverter.convert.data.substring(163) : '';
+
+    // setting the value of the converted code
+    setTargetLanguageCode(convertedCode)
+
   }, [codeConverter.convert]);
   return (
     <Page
@@ -206,9 +212,10 @@ const CodeConverter = () => {
               label="Sample Target Lang Code"
               multiline
               rows={22}
+              value={targetLanguageCode}
               placeholder={getSampleCodeTargetLanguage()}
               variant="outlined"
-            />  
+            />
           </Grid>
           <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
             <Button variant="contained" color="primary" className={classes.convertButtonClass} onClick={() => convertCode()}>

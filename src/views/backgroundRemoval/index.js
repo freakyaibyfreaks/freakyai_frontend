@@ -56,7 +56,7 @@ const BackgroundRemoval = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Email Us at rishabhb932@gmail.com to Learn More</Button>
+              <Button size="small">Email Us at adityachinmaya45@gmail.com, rishabhb932@gmail.com to Learn More</Button>
             </CardActions>
           </Card>
         </Grid>

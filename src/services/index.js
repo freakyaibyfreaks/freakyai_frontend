@@ -83,7 +83,6 @@ const get = async (url, data) => {
 
 // post request wrapper
 const post = async (url, data) => {
-  debugger
   const options = { "headers": {
 
     "content-type": "application/json",

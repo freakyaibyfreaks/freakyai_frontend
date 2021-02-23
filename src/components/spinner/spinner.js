@@ -54,6 +54,7 @@ const Spinner = ({ isLoading }) => {
   return showSpinner ? (
     <Backdrop className={classnames.backdrop} open>
       <CircularProgress className={classnames.spinner} />
+        <hr/>
         Magic is happenning!!! plzz wait
     </Backdrop>
   ) : null;

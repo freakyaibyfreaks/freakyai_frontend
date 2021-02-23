@@ -144,9 +144,8 @@ const Dashboard = () => {
     toConvert(JSON.stringify(reqObject))
   }
 
-  useEffect(() => {
-    debugger
-  }, [codeConverter.convert]);
+  // useEffect(() => {
+  // }, [codeConverter.convert]);
   return (
     // <Page
     //   className={classes.root}

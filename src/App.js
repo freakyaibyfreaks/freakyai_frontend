@@ -8,7 +8,7 @@ import GlobalStyles from 'src/components/GlobalStyles';
 import 'src/mixins/chartjs';
 import theme from 'src/theme';
 import routes from 'src/routes';
-
+import Spinner from './components/spinner/spinner.js';
 // setting up the state
 import { StateProvider } from './state';
 import reducers from './state/reducers';
@@ -23,6 +23,7 @@ const App = () => {
   return (
     <StateProvider initialState={initialState} reducer={reducers}>
       <ThemeProvider theme={theme}>
+        <Spinner/>
         <GlobalStyles />
         {routing}
       </ThemeProvider>

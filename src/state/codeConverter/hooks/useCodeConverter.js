@@ -15,7 +15,7 @@ const useCodeConverter = () => {
   const toConvert = async (values) => {
     dispatch(convert());
     try {
-      const response = await api.post('/codeConverter', values);
+      const response = await api.post('/codeconverter', values);
       dispatch(convertSuccess(response));
     } catch (e) {
       dispatch(convertFailure(e));
