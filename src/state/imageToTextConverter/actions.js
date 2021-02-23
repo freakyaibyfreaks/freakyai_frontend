@@ -1,8 +1,8 @@
-export const CONVERT = 'codeConverter/CONVERT';
-export const CONVERT_SUCCESS = 'codeConverter/CONVERT_SUCCESS';
-export const CONVERT_FAILURE = 'codeConverter/CONVERT_FAILURE';
+export const CONVERT = 'imageToTextConverter/CONVERT';
+export const CONVERT_SUCCESS = 'imageToTextConverter/CONVERT_SUCCESS';
+export const CONVERT_FAILURE = 'imageToTextConverter/CONVERT_FAILURE';
 
-export const RESET = 'codeConverter/RESET';
+export const RESET = 'imageToTextConverter/RESET';
 
 export const convert = () => ({
   type: CONVERT,
@@ -18,6 +18,6 @@ export const convertFailure = (payload) => ({
   payload,
 });
 
-export const resetCodeConverter = () => ({
+export const resetImageToTextConverter = () => ({
   type: RESET,
 });

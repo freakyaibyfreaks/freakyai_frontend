@@ -2,7 +2,7 @@ import {
   convert,
   convertSuccess,
   convertFailure,
-  resetCodeConverter,
+  resetImageToTextConverter,
 } from '../actions';
 import { useStateValue } from '../..';
 import api from '../../../services/index';
@@ -23,7 +23,7 @@ const useImageToTextConverter = () => {
   };
 
   const toReset = () => {
-    dispatch(resetCodeConverter());
+    dispatch(resetImageToTextConverter());
   };
 
   return {

@@ -12,7 +12,7 @@ export const INITIAL_STATE: CODE.codeConverterReducer = {
   convert: {} as CODE.codeConverter
 };
 
-const codeConverterReducer = (state = INITIAL_STATE, action: any) : CODE.codeConverterReducer => {
+const resetImageToTextConverter = (state = INITIAL_STATE, action: any) : CODE.codeConverterReducer => {
   switch (action.type) {
     case CONVERT:
       return {
@@ -45,4 +45,4 @@ const codeConverterReducer = (state = INITIAL_STATE, action: any) : CODE.codeCon
       return state;
   }
 };
-export default codeConverterReducer;
+export default resetImageToTextConverter;
