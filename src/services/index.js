@@ -1,10 +1,9 @@
 import axios from 'axios';
-import jwt_decode from "jwt-decode";
 import { API_BASE } from '../config/config';
 
 // import { userPool } from './auth/index'
 
-// const base = API_BASE || 'https://api.swifterhq.com'; // Fail-safe fallback to prod URL
+const base = API_BASE;// || 'https://api.swifterhq.com'; // Fail-safe fallback to prod URL
 
 // Request interceptor 
 // axios.interceptors.request.use(async (config) => { 
@@ -74,41 +73,46 @@ import { API_BASE } from '../config/config';
 // }); 
 
 // get request wrapper
-// const get = async (url, data) => {
-//   const options = { withCredentials: true };
-//   return axios
-//     .get(`${base}${url}`, { params: data, ...options })
-//     .then((res) => res.data)
-//     .catch((err) => err.response);
-// };
+const get = async (url, data) => {
+  const options = { withCredentials: true };
+  return axios
+    .get(`${base}${url}`, { params: data, ...options })
+    .then((res) => res.data)
+    .catch((err) => err.response);
+};
 
 // post request wrapper
-// const post = async (url, data) => {
-//   const options = { withCredentials: true };
-//   return axios.post(`${base}${url}`, data, options);
-// };
+const post = async (url, data) => {
+  debugger
+  const options = { "headers": {
+
+    "content-type": "application/json",
+    
+  }};
+  return axios.post(`${base}${url}`, data, options);
+};
 
 // put request wrapper
-// const put = async (url, data) => {
-//   const options = { withCredentials: true };
-//   return axios
-//     .put(`${base}${url}`, data, options)
-//     .then((res) => res.data)
-//     .catch((err) => err.response);
-// };
+const put = async (url, data) => {
+  const options = { withCredentials: true };
+  return axios
+    .put(`${base}${url}`, data, options)
+    .then((res) => res.data)
+    .catch((err) => err.response);
+};
 
 // remove request wrapper
-// const remove = async (url, data) => {
-//   const options = { withCredentials: true };
-//   return axios.delete(`${base}${url}`, data, options);
-// };
+const remove = async (url, data) => {
+  const options = { withCredentials: true };
+  return axios.delete(`${base}${url}`, data, options);
+};
 
 const api = {
-//   base,
-//   post,
-//   get,
-//   put,
-//   remove,
+  base,
+  post,
+  get,
+  put,
+  remove,
 };
 
 export default api;

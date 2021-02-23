@@ -1,15 +1,15 @@
 /* Avaialble Source languages */
 export const sourceLanguages = [
     'C++',
-    'JAVA', 
-    'Python'
+    // 'JAVA', 
+    // 'Python'
 ]
 
 /* Available target languages */
 export const targetLanguages = [
-    'C++',
+    // 'C++',
     'JAVA',
-    'Python'
+    // 'Python'
 ]
 
 /* Sample JAVA code */

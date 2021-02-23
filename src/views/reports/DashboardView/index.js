@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Grid,
@@ -18,6 +18,7 @@ import {
   sampleC_plus_plus_code 
 } from '../../../utils/constants/codeConverter/index';
 import Button from '@material-ui/core/Button';
+import useCodeConverter from '../../../state/codeConverter/hooks/useCodeConverter';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,10 +57,19 @@ const Dashboard = () => {
   const classes = useStyles();
 
   // Source language
-  const [sourceLanguage, setSourceLanguage] = React.useState('JAVA');
+  const [sourceLanguage, setSourceLanguage] = useState('C++');
 
   // target language
-  const [targetLanguage, setTargetLanguage] = React.useState('C++');
+  const [targetLanguage, setTargetLanguage] = useState('JAVA');
+
+  // source language code
+  const [sourceLanguageCode, setSourceLanguageCode] = useState('')
+
+  // target language code
+  const [targetLanguageCode, setTargetLanguageCode] = useState('')
+
+  // codeConverter object
+  const { codeConverter, toConvert } = useCodeConverter()
 
   // setting source language value
   const handleChangeSource = (event) => {
@@ -121,6 +131,22 @@ const Dashboard = () => {
       return samplePythonCode;
     }
   }
+
+  // convert code to the diff languages
+  const convertCode = () => {
+    
+    // constructing the request object
+    const reqObject = {
+      code: sourceLanguageCode
+    }
+    
+    // calling backend api to convert
+    toConvert(JSON.stringify(reqObject))
+  }
+
+  useEffect(() => {
+    debugger
+  }, [codeConverter.convert]);
   return (
     <Page
       className={classes.root}
@@ -171,6 +197,7 @@ const Dashboard = () => {
               rows={22}
               placeholder={getSampleCodeSourceLanguage()}
               variant="outlined"
+              onChange={(e) => setSourceLanguageCode(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6} className={classes.targetLangDiv}>
@@ -184,7 +211,7 @@ const Dashboard = () => {
             />  
           </Grid>
           <Grid xs={12} sm={12} md={12} lg={6} xl={6}>
-            <Button variant="contained" color="primary" className={classes.convertButtonClass} >
+            <Button variant="contained" color="primary" className={classes.convertButtonClass} onClick={() => convertCode()}>
               Convert
             </Button>
           </Grid>

@@ -7,9 +7,9 @@ import {
 import { useStateValue } from '../..';
 import api from '../../../services/index';
 
-const useCodeConverter = () => {
+const useImageToTextConverter = () => {
 
-  const [{ codeConverter }, dispatch] = useStateValue();
+  const [{ imageToTextConverter }, dispatch] = useStateValue();
   
   // convert code from one language to other
   const toConvert = async (values) => {
@@ -27,10 +27,10 @@ const useCodeConverter = () => {
   };
 
   return {
-    codeConverter,
+    imageToTextConverter,
     toConvert,
     toReset
   };
 };
 
-export default useCodeConverter;
+export default useImageToTextConverter;
