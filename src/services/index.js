@@ -84,9 +84,7 @@ const get = async (url, data) => {
 // post request wrapper
 const post = async (url, data) => {
   const options = { "headers": {
-
     "content-type": "application/json",
-    
   }};
   return axios.post(`${base}${url}`, data, options);
 };

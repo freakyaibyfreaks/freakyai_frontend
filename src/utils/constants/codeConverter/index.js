@@ -1,16 +1,16 @@
 /* Avaialble Source languages */
-export const sourceLanguages = [
-    'C++',
-    // 'JAVA', 
-    // 'Python'
-]
+export const sourceLanguages = {
+    CPP: 'cpp',
+    JAVA: 'java', 
+    Python: 'python'
+}
 
 /* Available target languages */
-export const targetLanguages = [
-    // 'C++',
-    'JAVA',
-    // 'Python'
-]
+export const targetLanguages = {
+    CPP: 'cpp',
+    JAVA: 'java',
+    Python: 'python'
+}
 
 /* Sample JAVA code */
 export const sampleJAVACode = `

@@ -57,10 +57,10 @@ const CodeConverter = () => {
   const classes = useStyles();
 
   // Source language
-  const [sourceLanguage, setSourceLanguage] = useState('C++');
+  const [sourceLanguage, setSourceLanguage] = useState(sourceLanguages['CPP']);
 
   // target language
-  const [targetLanguage, setTargetLanguage] = useState('JAVA');
+  const [targetLanguage, setTargetLanguage] = useState(targetLanguages['JAVA']);
 
   // source language code
   const [sourceLanguageCode, setSourceLanguageCode] = useState('')
@@ -137,7 +137,9 @@ const CodeConverter = () => {
     
     // constructing the request object
     const reqObject = {
-      code: sourceLanguageCode
+      code: sourceLanguageCode,
+      sourceLang: sourceLanguage,
+      destinationLang: targetLanguage
     }
     
     // calling backend api to convert
@@ -145,10 +147,46 @@ const CodeConverter = () => {
   }
 
   useEffect(() => {
+ 
+    // code returned by model
+    let convertedCode = '';
 
     // removing first n unneccessary characters from a string
-    const convertedCode = codeConverter.convert.data ? codeConverter.convert.data.substring(163) : '';
+    if (codeConverter.convert.data && sourceLanguage ==='cpp' && targetLanguage === 'java') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(163)
+    }
 
+    // removing first n unneccessary characters from a string
+    if (codeConverter.convert.data && sourceLanguage ==='python' && targetLanguage === 'java') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(135)
+    }
+
+    // removing first n unneccessary characters from a string
+    if (codeConverter.convert.data && sourceLanguage ==='java' && targetLanguage === 'cpp') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(135)
+    }
+
+    // removing first n unneccessary characters from a string
+    if (codeConverter.convert.data && sourceLanguage ==='python' && targetLanguage === 'cpp') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(135)
+    }
+
+    // removing first n unneccessary characters from a string
+    if (codeConverter.convert.data &&  sourceLanguage ==='cpp' && targetLanguage === 'python') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(135)
+    }
+
+    // removing first n unneccessary characters from a string
+    if (codeConverter.convert.data &&  sourceLanguage ==='java' && targetLanguage === 'python') {
+      debugger
+      convertedCode = codeConverter.convert.data.substring(135)
+    }        
+    debugger
     // setting the value of the converted code
     setTargetLanguageCode(convertedCode)
 
@@ -173,9 +211,9 @@ const CodeConverter = () => {
                 onChange={handleChangeSource}
                 label="sourceLanguage"
               >
-                <MenuItem value={sourceLanguages[0]}>{sourceLanguages[0]}</MenuItem>
-                <MenuItem value={sourceLanguages[1]}>{sourceLanguages[1]}</MenuItem>
-                <MenuItem value={sourceLanguages[2]}>{sourceLanguages[2]}</MenuItem>
+                <MenuItem value={sourceLanguages['CPP']}>{'CPP'}</MenuItem>
+                <MenuItem value={sourceLanguages['JAVA']}>{'JAVA'}</MenuItem>
+                <MenuItem value={sourceLanguages['Python']}>{'Python'}</MenuItem>
               </Select>
             </FormControl>
           </Grid> 
@@ -189,9 +227,9 @@ const CodeConverter = () => {
                 onChange={handleChangeTarget}
                 label="targetLanguage"
               >
-                <MenuItem value={targetLanguages[0]}> {targetLanguages[0]} </MenuItem>
-                <MenuItem value={targetLanguages[1]}> {targetLanguages[1]} </MenuItem>
-                <MenuItem value={targetLanguages[2]}> {targetLanguages[2]} </MenuItem>
+                <MenuItem value={targetLanguages['CPP']}> {'CPP'} </MenuItem>
+                <MenuItem value={targetLanguages['JAVA']}> {'JAVA'} </MenuItem>
+                <MenuItem value={targetLanguages['Python']}> {'Python'} </MenuItem>
               </Select>
             </FormControl>
           </Grid>       
