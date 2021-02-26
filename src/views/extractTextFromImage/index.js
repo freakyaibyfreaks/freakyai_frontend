@@ -4,7 +4,6 @@ import {
   Grid,
   Container,
 } from '@material-ui/core';
-import Page from 'src/components/Page';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';

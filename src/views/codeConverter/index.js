@@ -153,40 +153,41 @@ const CodeConverter = () => {
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data && sourceLanguage ==='cpp' && targetLanguage === 'java') {
-      debugger
-      convertedCode = codeConverter.convert.data.substring(163)
+      // finding the index of ')' character
+      let i = Number(codeConverter.convert.data.indexOf(')')) + 1
+
+      // total length of the string
+      let len = codeConverter.convert.data.length
+
+      // slicing the code
+      convertedCode = codeConverter.convert.data.slice(i, len)
     }
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data && sourceLanguage ==='python' && targetLanguage === 'java') {
-      debugger
       convertedCode = codeConverter.convert.data.substring(135)
     }
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data && sourceLanguage ==='java' && targetLanguage === 'cpp') {
-      debugger
       convertedCode = codeConverter.convert.data.substring(135)
     }
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data && sourceLanguage ==='python' && targetLanguage === 'cpp') {
-      debugger
+      
       convertedCode = codeConverter.convert.data.substring(135)
     }
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data &&  sourceLanguage ==='cpp' && targetLanguage === 'python') {
-      debugger
       convertedCode = codeConverter.convert.data.substring(135)
     }
 
     // removing first n unneccessary characters from a string
     if (codeConverter.convert.data &&  sourceLanguage ==='java' && targetLanguage === 'python') {
-      debugger
       convertedCode = codeConverter.convert.data.substring(135)
     }        
-    debugger
     // setting the value of the converted code
     setTargetLanguageCode(convertedCode)
 
