@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import React from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import * as Yup from "yup";
+import { Formik } from "formik";
 import {
   Box,
   Button,
@@ -10,19 +10,32 @@ import {
   Link,
   TextField,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-import FacebookIcon from 'src/icons/Facebook';
-import GoogleIcon from 'src/icons/Google';
-import Page from 'src/components/Page';
+  makeStyles,
+} from "@material-ui/core";
+import FacebookIcon from "src/icons/Facebook";
+import GoogleIcon from "src/icons/Google";
+import Page from "src/components/Page";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    height: '100%',
+    height: "100%",
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  }
+    paddingTop: theme.spacing(3),
+  },
+  SignInHeading: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  LoginSubtext: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "8px",
+  },
+  LoginButtonDiv: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 const LoginView = () => {
@@ -30,10 +43,7 @@ const LoginView = () => {
   const navigate = useNavigate();
 
   return (
-    <Page
-      className={classes.root}
-      title="Login"
-    >
+    <Page className={classes.root} title="Login">
       <Box
         display="flex"
         flexDirection="column"
@@ -43,15 +53,16 @@ const LoginView = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: 'demo@devias.io',
-              password: 'Password123'
+              email: "demo@devias.io",
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string()
+                .email("Must be a valid email")
+                .max(255)
+                .required("Email is required"),
             })}
             onSubmit={() => {
-              navigate('/app/codeConverter', { replace: true });
+              navigate("/app/codeConverter", { replace: true });
             }}
           >
             {({
@@ -61,70 +72,24 @@ const LoginView = () => {
               handleSubmit,
               isSubmitting,
               touched,
-              values
+              values,
             }) => (
               <form onSubmit={handleSubmit}>
-                <Box mb={3}>
+                <Box>
                   <Typography
                     color="textPrimary"
                     variant="h2"
+                    className={classes.SignInHeading}
                   >
-                    Sign in
+                    Login
                   </Typography>
                   <Typography
                     color="textSecondary"
                     gutterBottom
                     variant="body2"
+                    className={classes.LoginSubtext}
                   >
-                    Sign in on the internal platform
-                  </Typography>
-                </Box>
-                <Grid
-                  container
-                  spacing={3}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      color="primary"
-                      fullWidth
-                      startIcon={<FacebookIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Facebook
-                    </Button>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    md={6}
-                  >
-                    <Button
-                      fullWidth
-                      startIcon={<GoogleIcon />}
-                      onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
-                    >
-                      Login with Google
-                    </Button>
-                  </Grid>
-                </Grid>
-                <Box
-                  mt={3}
-                  mb={1}
-                >
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="body1"
-                  >
-                    or login with email address
+                    Passwordless login, no sign up
                   </Typography>
                 </Box>
                 <TextField
@@ -140,45 +105,17 @@ const LoginView = () => {
                   value={values.email}
                   variant="outlined"
                 />
-                <TextField
-                  error={Boolean(touched.password && errors.password)}
-                  fullWidth
-                  helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  type="password"
-                  value={values.password}
-                  variant="outlined"
-                />
-                <Box my={2}>
+                <Box my={2} className={classes.LoginButtonDiv}>
                   <Button
                     color="primary"
                     disabled={isSubmitting}
-                    fullWidth
-                    size="large"
+                    size="medium"
                     type="submit"
                     variant="contained"
                   >
-                    Sign in now
+                    Get in
                   </Button>
                 </Box>
-                <Typography
-                  color="textSecondary"
-                  variant="body1"
-                >
-                  Don&apos;t have an account?
-                  {' '}
-                  <Link
-                    component={RouterLink}
-                    to="/register"
-                    variant="h6"
-                  >
-                    Sign up
-                  </Link>
-                </Typography>
               </form>
             )}
           </Formik>
