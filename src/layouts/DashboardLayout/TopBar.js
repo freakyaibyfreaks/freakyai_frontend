@@ -9,7 +9,7 @@ import {
   Hidden,
   IconButton,
   Toolbar,
-  makeStyles
+  makeStyles,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
@@ -20,24 +20,16 @@ const useStyles = makeStyles(() => ({
   root: {},
   avatar: {
     width: 60,
-    height: 60
-  }
+    height: 60,
+  },
 }));
 
-const TopBar = ({
-  className,
-  onMobileNavOpen,
-  ...rest
-}) => {
+const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
 
   return (
-    <AppBar
-      className={clsx(classes.root, className)}
-      elevation={0}
-      {...rest}
-    >
+    <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
         <RouterLink to="/">
           <Logo />
@@ -53,15 +45,10 @@ const TopBar = ({
               {/* <NotificationsIcon /> */}
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
-            {/* <InputIcon /> */}
-          </IconButton>
+          <IconButton color="inherit">{/* <InputIcon /> */}</IconButton>
         </Hidden>
         <Hidden lgUp>
-          <IconButton
-            color="inherit"
-            onClick={onMobileNavOpen}
-          >
+          <IconButton color="inherit" onClick={onMobileNavOpen}>
             {/* <MenuIcon /> */}
           </IconButton>
         </Hidden>
@@ -72,7 +59,7 @@ const TopBar = ({
 
 TopBar.propTypes = {
   className: PropTypes.string,
-  onMobileNavOpen: PropTypes.func
+  onMobileNavOpen: PropTypes.func,
 };
 
 export default TopBar;

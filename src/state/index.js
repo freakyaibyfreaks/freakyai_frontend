@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useReducer } from 'react';
-import PropTypes from 'prop-types'; 
+import React, { createContext, useContext, useReducer } from "react";
+import PropTypes from "prop-types";
 export const StateContext = createContext();
 
 export const StateProvider = ({ reducer, initialState, children }) => (
@@ -9,10 +9,9 @@ export const StateProvider = ({ reducer, initialState, children }) => (
 );
 
 StateProvider.propTypes = {
-  reducer: PropTypes.func.isRequired, 
-  initialState:  PropTypes.func.isRequired, 
-  children:  PropTypes.func.isRequired,
+  reducer: PropTypes.func.isRequired,
+  initialState: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };
- 
+
 export const useStateValue = () => useContext(StateContext);
- 

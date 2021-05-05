@@ -1,8 +1,8 @@
 import React from 'react';
 import { CircularProgress, Backdrop } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import useCodeConverter from 'src/state/codeConverter/hooks/useCodeConverter';
-//import useAuth from '../state/auth/hooks/useAuth';
+// import useCodeConverter from 'src/state/codeConverter/hooks/useCodeConverter';
+import useAuth from '../../state/auth/hooks/useAuth';
 // import useProfile from '../state/profile/hooks/useProfile';
 // import useClassroom from '../state/classroom/hooks/useClassroom';
 // import useVerification from '../state/verify/hooks/useVerify';
@@ -28,34 +28,33 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Spinner = ({ isLoading }) => {
-    const { codeConverter } = useCodeConverter();
-//   const { profile } = useProfile();
-//   const { classroom } = useClassroom();
-//   const { verification } = useVerification();
-//   const { feedback } = useFeedback();
-//   const { messages } = useMessages();
-//   const { payment } = usePayment();
-//   const { settings } = useSettings();
-//   const { team } = useTeam();
+  const { auth } = useAuth();
+  // const { codeConverter } = useCodeConverter();
+  //   const { profile } = useProfile();
+  //   const { classroom } = useClassroom();
+  //   const { verification } = useVerification();
+  //   const { feedback } = useFeedback();
+  //   const { messages } = useMessages();
+  //   const { payment } = usePayment();
+  //   const { settings } = useSettings();
+  //   const { team } = useTeam();
   const classnames = useStyles();
 
-  const showSpinner =
-    isLoading ||
-    codeConverter.isLoading// ||
-    // profile.isLoading ||
-    // classroom.isLoading ||
-    // verification.isLoading ||
-    // feedback.isLoading ||
-    // messages.isLoading ||
-    // payment.isLoading ||
-    // settings.isLoading ||
-    // team.isLoading;
+  const showSpinner = isLoading || auth.isLoading; // ||
+  // profile.isLoading ||
+  // classroom.isLoading ||
+  // verification.isLoading ||
+  // feedback.isLoading ||
+  // messages.isLoading ||
+  // payment.isLoading ||
+  // settings.isLoading ||
+  // team.isLoading;
 
   return showSpinner ? (
     <Backdrop className={classnames.backdrop} open>
       <CircularProgress className={classnames.spinner} />
-        <hr/>
-        Magic is happenning!!! plzz wait
+      <hr />
+      {/* Magic is happenning!!! plzz wait */}
     </Backdrop>
   ) : null;
 };
