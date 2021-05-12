@@ -79,13 +79,17 @@ const authReducer = (state = INITIAL_STATE, action: any) => {
     case ANSWER_CHALLENGE:
       return {
         ...state,
+        logged: false,
         isLoading: true,
+        error: {},
       };
     case ANSWER_CHALLENGE_SUCCESS:
+      debugger;
       return {
         ...state,
         isLoading: false,
         logged: true,
+        user: userPool.getCurrentUser(),
       };
     case LOGOUT:
       return {

@@ -8,12 +8,10 @@ import BackgroundRemoval from 'src/views/backgroundRemoval';
 import ExtractImageFromImage from 'src/views/extractTextFromImage';
 import LoginView from 'src/views/auth/LoginView';
 import NotFoundView from 'src/views/errors/NotFoundView';
-// import ProductListView from "src/views/product/ProductListView";
-// import RegisterView from "src/views/auth/RegisterView";
-// import SettingsView from "src/views/settings/SettingsView";
-// import ResetPassword from "./views/auth/ResetPassword";
-import React from 'react';
+import { useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import useAuth from './state/auth/hooks/useAuth';
 
 // const routes = [
 //   {
@@ -42,50 +40,78 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // ];
 
 // export default routes;
-const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{ pathname: '/login', state: { from: props.location } }}
-        />
-      )
-    }
-  />
-);
+// const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={props =>
+//       isAuthenticated ? (
+//         <Component {...props} />
+//       ) : (
+//         <Redirect
+//           to={{ pathname: '/login', state: { from: props.location } }}
+//         />
+//       )
+//     }
+//   />
+// );
 
 const AppRoutes = ({ isLoggedIn }) => {
+  // history object used for routing
+  const history = useHistory();
+
+  const { auth } = useAuth();
+
+  useEffect(() => {
+    debugger;
+    if (auth.logged) {
+      history.push('/');
+    }
+  }, [auth.logged]);
+
+  //       { path: "codeConverter", element: <CodeConverter /> },
+  //       { path: "backgroundRemoval", element: <BackgroundRemoval /> },
+  //       { path: "extractImageFromImage", element: <ExtractImageFromImage /> },
+
+  const logged = isLoggedIn || auth.logged;
+
   return (
-    <Switch>
-      <PrivateRoute
-        path="/app/codeConverter"
-        component={() => <DashboardLayout InternalPage={CodeConverter} />}
-        isAuthenticated={isLoggedIn}
-      />
-      <PrivateRoute
-        path="/app/backgroundRemoval"
-        component={() => <DashboardLayout InternalPage={BackgroundRemoval} />}
-        isAuthenticated={isLoggedIn}
-      />
-      <PrivateRoute
-        path="/app/extractImageFromImage"
-        component={() => (
-          <DashboardLayout InternalPage={ExtractImageFromImage} />
-        )}
-        isAuthenticated={isLoggedIn}
-      />
-      <Route
-        path="/login"
-        component={() => <MainLayout InternalPage={LoginView} />}
-      />
-    </Switch>
+    <>
+      {logged ? (
+        <Switch>
+          <Route
+            path="/"
+            component={() => <DashboardLayout InternalPage={CodeConverter} />}
+          />
+
+          <Route
+            path="/app/backgroundRemoval"
+            component={() => (
+              <DashboardLayout InternalPage={BackgroundRemoval} />
+            )}
+          />
+          <Route
+            path="/app/extractImageFromImage"
+            component={() => (
+              <DashboardLayout InternalPage={ExtractImageFromImage} />
+            )}
+          />
+          <Route
+            path="/login"
+            component={() => <MainLayout InternalPage={LoginView} />}
+          />
+          <Redirect from="*" to="/" />
+        </Switch>
+      ) : (
+        <Switch>
+          <Route
+            path="/login"
+            component={() => <MainLayout InternalPage={LoginView} />}
+          />
+          <Redirect from="/" to="/login" />
+        </Switch>
+      )}
+    </>
   );
 };
 
 export default AppRoutes;
-//       { path: "codeConverter", element: <CodeConverter /> },
-//       { path: "backgroundRemoval", element: <BackgroundRemoval /> },
-//       { path: "extractImageFromImage", element: <ExtractImageFromImage /> },

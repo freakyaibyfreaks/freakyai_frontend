@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { INITIAL_STATE as AUTH_INITIAL_STATE } from './state/auth/reducers';
 import { INITIAL_STATE as BACKGROUND_REMOVAL_INITIAL_STATE } from './state/backgroundRemoval/reducers';
 import { INITIAL_STATE as CODECONVERTER_INITIAL_STATE } from './state/codeConverter/reducers';
-// import { useRoutes } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import GlobalStyles from 'src/components/GlobalStyles';
 import 'src/mixins/chartjs';
@@ -24,18 +23,22 @@ const App = () => {
     backgroundRemoval: BACKGROUND_REMOVAL_INITIAL_STATE,
   };
 
-  // auth object
-  // const { auth } = useAuth();
-
-  // console.log('auth', auth);
-
   // User loggin/logout status
   const [isLoggedIn, setIsLoggedIn] = useState(initialState.auth.logged);
 
-  // useEffect(() => {
+  useEffect(() => {
+    const response =
+      localStorage.getItem('user') !== null
+        ? JSON.parse(localStorage.getItem('user'))
+        : {};
 
-  // }, []);
-
+    if (response && response.details && response.details.email) {
+      initialState.auth.user = response;
+      initialState.auth.logged = true;
+      setIsLoggedIn(true);
+    }
+  }, []);
+  console.log('isLoggedIn', isLoggedIn);
   return (
     <StateProvider initialState={initialState} reducer={reducers}>
       <ThemeProvider theme={theme}>

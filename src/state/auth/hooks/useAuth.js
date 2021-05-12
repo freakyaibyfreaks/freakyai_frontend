@@ -79,34 +79,35 @@ const useAuth = () => {
   };
 
   /* Logout user function */
-  const toLogout = async () => {
-    dispatch(logout());
-    try {
-      const cognitoUser = userPool.getCurrentUser();
+  // const toLogout = async () => {
+  //   dispatch(logout());
+  //   try {
+  //     localStorage.removeItem('user');
 
-      if (cognitoUser != null) {
-        cognitoUser.signOut();
-        localStorage.removeItem('user');
-      }
+  //     await Auth.signOut({ global: true });
 
-      const response = { data: [] };
-      dispatch(logoutSuccess(response.data));
-    } catch (e) {
-      dispatch(logoutFailure(e.response.data.message));
-    }
-  };
+  //     // dispatch(logoutSuccess(response.data));
+  //   } catch (e) {
+  //     // dispatch(logoutFailure(e.response.data.message));
+  //   }
+  // };
 
   /* Verify custom auth challenge */
   const answerCustomChallenge = async answer => {
-    debugger;
     dispatch(answerChallenge());
+    cognitoUser = await Auth.sendCustomChallengeAnswer(cognitoUser, answer);
     try {
-      cognitoUser = await Auth.sendCustomChallengeAnswer(cognitoUser, answer);
+      // This will throw an error if the user is not yet authenticated:
+      let tokens = await Auth.currentSession();
+
       dispatch(answerChallengeSuccess(cognitoUser));
-      // _setUserDetails(cognitoUser);
+
+      _setUserDetails(tokens);
+      debugger;
     } catch (e) {
       dispatch(loginFailure(e));
     }
+    return isAuthenticated();
   };
 
   const toReset = () => {
@@ -114,6 +115,42 @@ const useAuth = () => {
   };
 
   /* Helper function */
+  // private method
+  const _setUserDetails = async cognitoUser => {
+    // todo this function needs revisiting about access token and id token
+    // extracting relevent information from the token
+    const accessToken = cognitoUser.accessToken.jwtToken;
+
+    const jwtToken = cognitoUser.idToken.jwtToken;
+
+    const userDetails = cognitoUser.idToken.payload;
+
+    // creating user object
+    const user = {
+      token: jwtToken,
+      details: userDetails,
+      accessToken: accessToken,
+    };
+
+    // Setting up the cookie
+    document.cookie = 'authentication=' + String(user.accessToken) + ';';
+
+    // storing the user details in the localstorage
+    localStorage.setItem('user', JSON.stringify(user));
+
+    return user;
+  };
+
+  // checking if user has been authenticated
+  const isAuthenticated = async () => {
+    try {
+      await Auth.currentSession();
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   /* Get Random String */
   const _getRandomString = bytes => {
     const randomValues = new Uint8Array(bytes);
@@ -135,7 +172,7 @@ const useAuth = () => {
     toSignIn,
     answerCustomChallenge,
     toReset,
-    toLogout,
+    // toLogout,
     // getLoginState,
     // getCurrentUser,
   };

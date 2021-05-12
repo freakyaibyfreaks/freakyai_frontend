@@ -18,6 +18,11 @@ const useStyles = makeStyles(theme => ({
 
 const LoginView = () => {
   const classes = useStyles();
+
+  // email of the user
+  const [email, setEmail] = useState('');
+
+  // state management of the auth page
   const [isEmailPage, setEmailPage] = useState(true);
 
   // Destructuring auth object
@@ -27,10 +32,10 @@ const LoginView = () => {
   const { isMessageSent } = auth;
 
   useEffect(() => {
-    if (isMessageSent) {
+    if (isMessageSent || !isEmailPage) {
       setEmailPage(false);
     }
-  }, [isMessageSent]);
+  }, [isMessageSent, isEmailPage]);
 
   return (
     <Page className={classes.root} title="Login">
@@ -42,9 +47,13 @@ const LoginView = () => {
       >
         <Container maxWidth="sm">
           {isEmailPage ? (
-            <EmailContainer setEmailPage={setEmailPage} />
+            <EmailContainer
+              setEmailPage={setEmailPage}
+              email={email}
+              setEmail={setEmail}
+            />
           ) : (
-            <OTPContainer />
+            <OTPContainer email={email} />
           )}
         </Container>
       </Box>
